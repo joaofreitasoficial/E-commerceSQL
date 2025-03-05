@@ -1,0 +1,48 @@
+-- Listar todos os clientes
+SELECT * FROM Cliente;
+
+-- Listar todos os pedidos
+SELECT * FROM Pedido;
+
+-- Pedidos concluídos
+SELECT * FROM Pedido WHERE Status_Pedido = 'Concluído';
+
+-- Produtos com valor maior que 1000
+SELECT * FROM Produto WHERE Valor > 1000;
+
+-- Valor total dos pedidos por cliente
+SELECT 
+    ID_Cliente, 
+    SUM(Valor_Total) AS Total_Gasto
+FROM 
+    Pedido
+GROUP BY 
+    ID_Cliente;
+
+-- Produtos ordenados por valor (do mais caro para o mais barato)
+SELECT * FROM Produto ORDER BY Valor DESC;
+
+-- Clientes que gastaram mais de 200
+SELECT 
+    ID_Cliente, 
+    SUM(Valor_Total) AS Total_Gasto
+FROM 
+    Pedido
+GROUP BY 
+    ID_Cliente
+HAVING 
+    Total_Gasto > 200;
+
+-- Pedidos com detalhes do cliente e entrega
+SELECT 
+    Pedido.ID_Pedido,
+    Cliente.Nome_Razao_Social,
+    Pedido.Valor_Total,
+    Entrega.Status_Entrega
+FROM 
+    Pedido
+JOIN 
+    Cliente ON Pedido.ID_Cliente = Cliente.ID_Cliente
+JOIN 
+    Entrega ON Pedido.ID_Pedido = Entrega.ID_Pedido;
+
