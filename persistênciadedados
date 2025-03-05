@@ -1,0 +1,65 @@
+-- Inserir clientes
+INSERT INTO Cliente (Tipo_Cliente, Nome_Razao_Social, CPF_CNPJ, Endereco, Telefone)
+VALUES 
+    ('PF', 'João Silva', '123.456.789-00', 'Rua A, 123', '(11) 9999-8888'),
+    ('PJ', 'Empresa XYZ', '12.345.678/0001-99', 'Av. B, 456', '(11) 7777-6666');
+
+-- Inserir pagamentos
+INSERT INTO Pagamento (ID_Cliente, Forma_Pagamento, Detalhes_Pagamento)
+VALUES 
+    (1, 'Cartão', 'Número: 1234-5678-9012-3456'),
+    (2, 'Pix', 'Chave: empresa.xyz@email.com');
+
+-- Inserir pedidos
+INSERT INTO Pedido (ID_Cliente, Status_Pedido, Data_Pedido, Valor_Total)
+VALUES 
+    (1, 'Concluído', '2023-10-01', 150.00),
+    (2, 'Em andamento', '2023-10-02', 300.00);
+
+-- Inserir entregas
+INSERT INTO Entrega (ID_Pedido, Status_Entrega, Codigo_Rastreio, Data_Prevista, Data_Entrega)
+VALUES 
+    (1, 'Entregue', 'ABC123456789', '2023-10-05', '2023-10-05'),
+    (2, 'Em trânsito', 'XYZ987654321', '2023-10-10', NULL);
+
+-- Inserir produtos
+INSERT INTO Produto (Nome, Descricao, Valor)
+VALUES 
+    ('Notebook', 'Notebook Dell i7', 5000.00),
+    ('Smartphone', 'iPhone 14', 7000.00);
+
+-- Inserir fornecedores
+INSERT INTO Fornecedor (Nome, CNPJ, Endereco, Telefone)
+VALUES 
+    ('Fornecedor A', '11.111.111/0001-11', 'Rua X, 789', '(11) 8888-7777'),
+    ('Fornecedor B', '22.222.222/0001-22', 'Av. Y, 101', '(11) 6666-5555');
+
+-- Inserir estoques
+INSERT INTO Estoque (Local)
+VALUES 
+    ('Depósito Central'),
+    ('Depósito Regional');
+
+-- Inserir relações produto-fornecedor
+INSERT INTO Produto_Fornecedor (ID_Produto, ID_Fornecedor, Quantidade)
+VALUES 
+    (1, 1, 50),
+    (2, 2, 100);
+
+-- Inserir relações produto-estoque
+INSERT INTO Produto_Estoque (ID_Produto, ID_Estoque, Quantidade)
+VALUES 
+    (1, 1, 20),
+    (2, 2, 30);
+
+-- Inserir vendedores
+INSERT INTO Vendedor (Nome, CPF, Endereco, Telefone)
+VALUES 
+    ('Carlos Souza', '111.222.333-44', 'Rua Z, 555', '(11) 4444-3333'),
+    ('Ana Lima', '555.666.777-88', 'Av. W, 999', '(11) 2222-1111');
+
+-- Inserir relações produto-vendedor
+INSERT INTO Produto_Vendedor (ID_Produto, ID_Vendedor, Quantidade)
+VALUES 
+    (1, 1, 10),
+    (2, 2, 15);
